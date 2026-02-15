@@ -110,6 +110,7 @@ function ElevatorModel({
   const targetY = toY(selectedFloor);
   const emergency = mode === "emergency";
   const maintenance = mode === "maintenance";
+  const cabinLightColor = emergency ? "#fb7185" : maintenance ? "#93c5fd" : "#60a5fa";
 
   useFrame((state) => {
     const delta = state.clock.getDelta();
@@ -133,9 +134,9 @@ function ElevatorModel({
 
     if (cabinLightRef.current) {
       const pulse = 1 + Math.sin(state.clock.elapsedTime * 2.3) * 0.12;
-      const base = emergency ? 1.25 : maintenance ? 0.85 : 1.05;
+      const base = emergency ? 1.45 : maintenance ? 1 : 1.2;
       cabinLightRef.current.intensity += (base * pulse - cabinLightRef.current.intensity) * Math.min(1, delta * 8);
-      cabinLightRef.current.color.set(emergency ? "#fb7185" : "#60a5fa");
+      cabinLightRef.current.color.set(cabinLightColor);
     }
   });
 
@@ -208,7 +209,18 @@ function ElevatorModel({
           <meshStandardMaterial color={partGlow("control-panel")} emissive="#172554" />
         </mesh>
 
-        <pointLight ref={cabinLightRef} position={[0, 0.18, 0]} color="#60a5fa" intensity={1} distance={2.8} />
+        <mesh position={[0, 0.3, 0]}>
+          <boxGeometry args={[0.95, 0.03, 0.58]} />
+          <meshStandardMaterial
+            color="#f8fafc"
+            emissive={cabinLightColor}
+            emissiveIntensity={emergency ? 1.1 : maintenance ? 0.55 : 0.75}
+            metalness={0.08}
+            roughness={0.26}
+          />
+        </mesh>
+
+        <pointLight ref={cabinLightRef} position={[0, 0.26, 0]} color={cabinLightColor} intensity={1.2} distance={3.1} />
       </group>
 
       <mesh position={[0, 3.44, 0]}>
@@ -380,6 +392,24 @@ export default function ElevatorViewer() {
                 intensity={lightView ? (lowPerfMode ? 0.62 : 0.78) : lowPerfMode ? 0.42 : 0.55}
                 color={lightView ? "#38bdf8" : "#60a5fa"}
               />
+              {!lightView ? (
+                <>
+                  <spotLight
+                    position={[0, 5.4, 2.1]}
+                    angle={0.42}
+                    intensity={lowPerfMode ? 1.25 : 1.75}
+                    penumbra={0.45}
+                    color="#ffffff"
+                  />
+                  <spotLight
+                    position={[-2.2, 3.1, 2.6]}
+                    angle={0.5}
+                    intensity={lowPerfMode ? 0.5 : 0.78}
+                    penumbra={0.75}
+                    color="#bfdbfe"
+                  />
+                </>
+              ) : null}
               <ElevatorModel
                 selectedFloor={selectedFloor}
                 doorOpen={doorOpen}

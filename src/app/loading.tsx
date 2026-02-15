@@ -1,5 +1,5 @@
 import { PageLoader } from "@/components/layout/page-loader";
 
-export default function AppLoading() {
+export default function Loading() {
   return <PageLoader />;
 }

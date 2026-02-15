@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { navForRole } from "@/components/app/nav-links";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 function SidebarLinks({ role, onNavigate }: { role: Role; onNavigate?: () => void }) {
@@ -66,6 +66,9 @@ export function MobileSidebar({ role }: { role: Role }) {
       <SheetContent side="left" className="border-slate-800 bg-slate-950 text-slate-100">
         <SheetHeader>
           <SheetTitle className="text-slate-100">SWAELCO Ops</SheetTitle>
+          <SheetDescription className="text-slate-400">
+            Select a section to navigate the operations workspace.
+          </SheetDescription>
         </SheetHeader>
         <div className="mt-6">
           <SidebarLinks role={role} />

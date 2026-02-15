@@ -32,7 +32,7 @@ export function PublicFooter() {
 
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <BrandLogo subtitle="Elevator Systems" />
+            <BrandLogo subtitle="Rising to New Heights" />
             <p className="mt-2 text-sm text-slate-300">
               Installation, modernization, and maintenance programs for high-demand buildings.
             </p>

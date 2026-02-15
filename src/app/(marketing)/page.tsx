@@ -123,7 +123,7 @@ export default function HomePage() {
               <p className="mt-1">Clear audit logs and signed milestones for internal and regulatory reviews.</p>
             </div>
             <Button asChild variant="outline" className="w-full border-blue-300/35 bg-blue-500/10 text-blue-100 hover:bg-blue-500/20">
-              <Link href="/login">Preview Customer Portal</Link>
+              <Link href="/contact">Get in Touch</Link>
             </Button>
           </CardContent>
         </Card>

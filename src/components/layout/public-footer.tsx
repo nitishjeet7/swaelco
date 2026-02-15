@@ -54,7 +54,6 @@ export function PublicFooter() {
             <Link href="/services" className="block text-slate-300 hover:text-white">Services</Link>
             <Link href="/about" className="block text-slate-300 hover:text-white">About</Link>
             <Link href="/contact" className="block text-slate-300 hover:text-white">Contact</Link>
-            <Link href="/login" className="block text-blue-300 hover:text-blue-200">Customer Portal</Link>
           </div>
         </div>
 

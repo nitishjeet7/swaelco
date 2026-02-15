@@ -67,10 +67,6 @@ export function PublicHeader() {
             </a>
           </Button>
 
-          <Button asChild variant="ghost" className="hidden text-slate-100 hover:bg-slate-800 md:inline-flex">
-            <Link href="/login">Portal Login</Link>
-          </Button>
-
           <Button asChild className="hidden bg-red-500 text-white hover:bg-red-400 sm:inline-flex">
             <Link href="/contact">Request a Quote</Link>
           </Button>
@@ -96,12 +92,6 @@ export function PublicHeader() {
                     {link.label}
                   </Link>
                 ))}
-                <Link
-                  href="/login"
-                  className="block rounded-md px-3 py-2 text-sm text-blue-200 hover:bg-blue-500/10"
-                >
-                  Portal Login
-                </Link>
                 <Link
                   href="/contact"
                   className="mt-2 block rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white"
